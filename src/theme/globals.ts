@@ -10,7 +10,7 @@ const style = css`
   body {
     font-family: ${({ theme }) => theme.fonts.Roboto}, sans-serif;
     font-weight: 400;
-    background: ${({ theme }) => theme.colors.neutral[0]};
+    background: ${({ theme }) => theme.colors.neutral[100]};
     color: ${({ theme }) => theme.colors.neutral[900]};
   }
 
