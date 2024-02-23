@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled.section`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -28,7 +28,7 @@ export const Title = styled.h1`
   margin-bottom: 1rem;
 `;
 
-export const Subtitle = styled.p`
+export const Subtitle = styled.h2`
   font-size: 1.25rem;
   font-weight: 400;
   color: ${({ theme }) => theme.colors.neutral[800]};
@@ -58,6 +58,12 @@ export const Background = styled.div`
   height: 100%;
   z-index: 0;
   opacity: 0.15;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
 `;
 
 export const List = styled.ul`
