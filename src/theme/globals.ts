@@ -35,9 +35,11 @@ const style = css`
     cursor: not-allowed;
   }
 
+  a:focus-visible,
   button:focus-visible {
     outline: none;
-    box-shadow: 0 0 0 2px ${({ theme }) => theme.colors.primary[0]};
+    box-shadow: 0 0 0 2px ${({ theme }) => theme.colors.primary[100]};
+    border-radius: 0.375rem;
   }
 `;
 

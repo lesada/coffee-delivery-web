@@ -1,5 +1,6 @@
 import { ShoppingCartSimple } from "phosphor-react";
 
+import QuantityInput from "@/components/QuantityInput";
 import coffeeList from "@/constants/coffeeList";
 import colors from "@/theme/colors";
 import { formatToCurrency } from "@/utils/formatToCurrency";
@@ -39,6 +40,7 @@ function Menu() {
               <Price>
                 <span>$</span> {formatToCurrency(item.price)}
               </Price>
+              <QuantityInput />
               <CartIcon>
                 <ShoppingCartSimple
                   size={24}
