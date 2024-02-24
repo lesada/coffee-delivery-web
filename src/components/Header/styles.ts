@@ -6,6 +6,10 @@ export const Container = styled.header`
   justify-content: space-between;
 
   padding: 2rem 0;
+  position: sticky;
+  top: 0;
+  background-color: ${({ theme }) => theme.colors.neutral[100]};
+  z-index: 99;
 `;
 
 export const Actions = styled.div`
