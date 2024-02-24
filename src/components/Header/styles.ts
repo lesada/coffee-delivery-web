@@ -41,4 +41,29 @@ export const Cart = styled.div`
   background-color: ${({ theme }) => theme.colors.secondary[0]};
   padding: 0.5rem;
   border-radius: 0.375rem;
+  position: relative;
+`;
+
+export const QuantityItems = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  aspect-ratio: 1;
+  background-color: ${({ theme }) => theme.colors.secondary[200]};
+  border-radius: 50%;
+  min-width: 1.25rem;
+  width: fit-content;
+  padding: 0.25rem;
+
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-align: center;
+  letter-spacing: -0.045rem;
+  color: ${({ theme }) => theme.colors.neutral[0]};
+
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(50%, -50%);
 `;

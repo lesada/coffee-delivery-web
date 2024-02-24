@@ -3,7 +3,7 @@ const coffeeList = [
     tags: ["Traditional"],
     name: "Espresso",
     description:
-      "A concentrated shot of coffee made by forcing hot water through finely-ground coffee beans.",
+      "A concentrated shot of coffee made by forcing hot water through the coffee grounds.",
     price: 9.9,
     imageAlias: "Espresso",
   },
@@ -11,7 +11,7 @@ const coffeeList = [
     tags: ["Traditional"],
     name: "Americano",
     description:
-      "A single shot of espresso with hot water added to make a 6 oz. cup. The strength is similar to drip coffee.",
+      "A single shot of espresso with hot water added. The strength is similar to drip coffee.",
     price: 9.9,
     imageAlias: "Americano",
   },
@@ -35,7 +35,8 @@ const coffeeList = [
     tags: ["Traditional", "Milk"],
     name: "Flat White",
     description:
-      "A double shot of espresso with steamed milk and a small amount of foam.",
+      "A single shot of espresso with steamed milk and a small amount of foam.",
+
     price: 9.9,
     imageAlias: "FlatWhite",
   },
@@ -43,7 +44,7 @@ const coffeeList = [
     tags: ["Traditional", "Milk"],
     name: "Latte",
     description:
-      "A single shot of espresso with double the amount of steamed milk and a small amount of foam.",
+      "A double shot of espresso with steamed milk and a small amount of foam.",
     price: 9.9,
     imageAlias: "Latte",
   },

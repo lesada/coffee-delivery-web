@@ -2,12 +2,14 @@ import { MapPin, ShoppingCart } from "phosphor-react";
 import { Link } from "react-router-dom";
 
 import Assets from "@/assets";
+import useCart from "@/contexts/cart";
 import { RoutesPaths } from "@/routes/paths";
 import colors from "@/theme/colors";
 
-import { Actions, Cart, Container, Location } from "./styles";
+import { Actions, Cart, Container, Location, QuantityItems } from "./styles";
 
 function Header() {
+  const { cartQuantity } = useCart();
   return (
     <Container>
       <Link to={RoutesPaths.HOME}>
@@ -25,8 +27,11 @@ function Header() {
             <ShoppingCart
               weight="fill"
               size={22}
-              color={colors.secondary[100]}
+              color={colors.secondary[200]}
             />
+            <QuantityItems>
+              <span>{cartQuantity}</span>
+            </QuantityItems>
           </Cart>
         </Link>
       </Actions>

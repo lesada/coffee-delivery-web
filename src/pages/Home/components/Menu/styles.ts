@@ -19,7 +19,7 @@ export const List = styled.ul`
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 2.5rem 2rem;
+  gap: 2.5rem 1.25rem;
   text-align: center;
 `;
 
@@ -33,7 +33,7 @@ export const Item = styled.li`
   padding: 1.25rem;
 
   height: 21.2rem;
-  width: 15rem;
+  width: 15.4rem;
   position: relative;
 `;
 
