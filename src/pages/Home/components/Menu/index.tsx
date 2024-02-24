@@ -40,7 +40,7 @@ function Menu() {
               <Price>
                 <span>$</span> {formatToCurrency(item.price)}
               </Price>
-              <QuantityInput />
+              <QuantityInput item={item} />
               <CartIcon>
                 <ShoppingCartSimple
                   size={24}

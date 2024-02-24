@@ -9,7 +9,7 @@ import colors from "@/theme/colors";
 import { Actions, Cart, Container, Location, QuantityItems } from "./styles";
 
 function Header() {
-  const { cartQuantity } = useCart();
+  const { itemsQuantity } = useCart();
   return (
     <Container>
       <Link to={RoutesPaths.HOME}>
@@ -29,9 +29,11 @@ function Header() {
               size={22}
               color={colors.secondary[200]}
             />
-            <QuantityItems>
-              <span>{cartQuantity}</span>
-            </QuantityItems>
+            {itemsQuantity > 0 && (
+              <QuantityItems>
+                <span>{itemsQuantity}</span>
+              </QuantityItems>
+            )}
           </Cart>
         </Link>
       </Actions>
