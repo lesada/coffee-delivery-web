@@ -58,6 +58,7 @@ export const Background = styled.div`
   height: 100%;
   z-index: 0;
   opacity: 0.15;
+  overflow: hidden;
 
   img {
     width: 100%;

@@ -33,7 +33,7 @@ export const Item = styled.li`
   padding: 1.25rem;
 
   height: 21.2rem;
-  width: 16rem;
+  width: 15rem;
   position: relative;
 `;
 
