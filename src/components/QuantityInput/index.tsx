@@ -47,7 +47,10 @@ function QuantityInput({ item }: QuantityInputProps) {
   return (
     <Container>
       <button onClick={onMinusClick} disabled={itemQuantity === 0}>
-        <Minus size={14} color={colors.primary[100]} />
+        <Minus
+          size={14}
+          color={itemQuantity === 0 ? colors.neutral[800] : colors.primary[100]}
+        />
       </button>
       <Input type="number" value={itemQuantity} onChange={onChange} max={99} />
       <button onClick={onPlusClick} disabled={itemQuantity === 99}>
