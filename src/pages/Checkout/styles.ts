@@ -1,9 +1,12 @@
 import styled from "styled-components";
 
 export const Container = styled.main`
-  display: flex;
-  gap: 2rem;
-  flex-wrap: wrap;
+  form {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
 `;
 
 export const Wrapper = styled.div`
@@ -50,12 +53,14 @@ export const CardTitle = styled.div`
     font-size: 1rem;
     color: ${({ theme }) => theme.colors.neutral[800]};
     line-height: 130%;
+    font-weight: 400;
   }
 
   h4 {
     color: ${({ theme }) => theme.colors.neutral[700]};
     font-size: 0.875rem;
     line-height: 130%;
+    font-weight: 400;
   }
 `;
 
@@ -64,7 +69,7 @@ export const Column = styled.div`
   flex-direction: column;
 `;
 
-export const Form = styled.form`
+export const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: 1rem 0.75rem;

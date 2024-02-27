@@ -1,12 +1,13 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { CurrencyDollar, MapPinLine } from "phosphor-react";
-import { useForm } from "react-hook-form";
+import { Bank, CreditCard, CurrencyDollar, MapPinLine } from "phosphor-react";
+import { Controller, useForm } from "react-hook-form";
 
+import ToggleGroup from "@/components/ToggleGroup";
 import colors from "@/theme/colors";
 
 import { fields } from "./constants";
-import { AddressFormDataSchema } from "./schema";
-import { AddressFormData, FieldProps } from "./types";
+import { DeliveryFormDataSchema } from "./schema";
+import { DeliveryFormData, FieldProps } from "./types";
 
 import {
   Box,
@@ -14,7 +15,8 @@ import {
   CardTitle,
   Column,
   Container,
-  Form,
+  Error,
+  Grid,
   Input,
   Section,
   SectionTitle,
@@ -22,7 +24,7 @@ import {
 } from "./styles";
 
 function Checkout() {
-  const methods = useForm<AddressFormData>({
+  const methods = useForm<DeliveryFormData>({
     defaultValues: {
       postalCode: "",
       address: "",
@@ -30,59 +32,98 @@ function Checkout() {
       district: "",
       city: "",
       state: "",
+      paymentMethod: "",
     },
-    resolver: zodResolver(AddressFormDataSchema),
+    resolver: zodResolver(DeliveryFormDataSchema),
     mode: "onTouched",
   });
 
-  const { handleSubmit } = methods;
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = methods;
 
   const createInputs = (fields: FieldProps[]) => {
     return fields.map((field) => (
       <Box $spanColumns={field.spanColumns} key={field.name}>
-        <Input type="text" placeholder={field.placeholder} name={field.name} />
+        <Input
+          type="text"
+          placeholder={field.placeholder}
+          {...register(field.name)}
+        />
+        {errors[field.name] && <Error>{errors[field.name]?.message}</Error>}
       </Box>
     ));
   };
 
+  const onSubmit = (data: DeliveryFormData) => {
+    console.log(data);
+  };
+
   return (
     <Container>
-      <Wrapper>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <Wrapper>
+          <Section>
+            <SectionTitle>
+              <h1>Complete your order</h1>
+            </SectionTitle>
+            <Card>
+              <CardTitle>
+                <MapPinLine size={22} color={colors.secondary[200]} />
+                <Column>
+                  <h3>Address details</h3>
+                  <h4>Please, confirm the delivery address</h4>
+                </Column>
+              </CardTitle>
+              <Grid>{createInputs(fields)}</Grid>
+            </Card>
+          </Section>
+          <Section>
+            <Card>
+              <CardTitle>
+                <CurrencyDollar size={22} color={colors.primary[100]} />
+                <Column>
+                  <h3>Address details</h3>
+                  <h4>Please, confirm the delivery address</h4>
+                </Column>
+              </CardTitle>
+              <Controller
+                name="paymentMethod"
+                control={methods.control}
+                render={({ field }) => (
+                  <ToggleGroup.Root
+                    {...field}
+                    onValueChange={field.onChange}
+                    type="single"
+                  >
+                    <ToggleGroup.Item value="credit">
+                      <CreditCard size={16} color={colors.primary[100]} />
+                      Credit Card
+                    </ToggleGroup.Item>
+                    <ToggleGroup.Item value="debit">
+                      <Bank size={16} color={colors.primary[100]} />
+                      Debit Card
+                    </ToggleGroup.Item>
+                    <ToggleGroup.Item value="cash">
+                      <CurrencyDollar size={16} color={colors.primary[100]} />
+                      Cash
+                    </ToggleGroup.Item>
+                  </ToggleGroup.Root>
+                )}
+              />
+            </Card>
+          </Section>
+        </Wrapper>
         <Section>
           <SectionTitle>
-            <h1>Complete your order</h1>
+            <h2>Selected items</h2>
+            <Card></Card>
+            <button type="submit">Confirm order</button>
           </SectionTitle>
-          <Card>
-            <CardTitle>
-              <MapPinLine size={22} color={colors.secondary[200]} />
-              <Column>
-                <h3>Address details</h3>
-                <h4>Please, confirm the delivery address</h4>
-              </Column>
-            </CardTitle>
-            <Form onSubmit={handleSubmit(() => {})}>
-              {createInputs(fields)}
-            </Form>
-          </Card>
         </Section>
-        <Section>
-          <Card>
-            <CardTitle>
-              <CurrencyDollar size={22} color={colors.primary[100]} />
-              <Column>
-                <h3>Address details</h3>
-                <h4>Please, confirm the delivery address</h4>
-              </Column>
-            </CardTitle>
-          </Card>
-        </Section>
-      </Wrapper>
-      <Section>
-        <SectionTitle>
-          <h2>Selected items</h2>
-          <Card></Card>
-        </SectionTitle>
-      </Section>
+      </form>
     </Container>
   );
 }
