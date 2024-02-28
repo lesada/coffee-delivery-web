@@ -1,3 +1,5 @@
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { ThemeProvider } from "styled-components";
 
 import { CartContextProvider } from "./contexts/cart";
@@ -12,6 +14,7 @@ function App() {
         <Routes />
       </CartContextProvider>
       <GlobalStyle />
+      <ToastContainer />
     </ThemeProvider>
   );
 }
