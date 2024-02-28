@@ -11,6 +11,8 @@ type CartContextData = {
   updateCartItemQuantity: (item: TCoffee, quantity: number) => void;
   itemsQuantity: number;
   getCurrentItemQuantity: (item: TCoffee) => number;
+  clearCart: () => void;
+  removeItem: (item: TCoffee) => void;
 };
 
 export const CartContext = createContext({} as CartContextData);
@@ -41,6 +43,16 @@ export function CartContextProvider({ children }: PropsWithChildren) {
     });
   };
 
+  function clearCart() {
+    setCartItems([]);
+  }
+
+  function removeItem(item: TCoffee) {
+    setCartItems((prevCartItems) =>
+      prevCartItems.filter((cartItem) => cartItem.name !== item.name)
+    );
+  }
+
   const itemsQuantity = cartItems.reduce((acc, item) => acc + item.quantity, 0);
 
   return (
@@ -50,6 +62,8 @@ export function CartContextProvider({ children }: PropsWithChildren) {
         updateCartItemQuantity,
         itemsQuantity,
         getCurrentItemQuantity,
+        clearCart,
+        removeItem,
       }}
     >
       {children}

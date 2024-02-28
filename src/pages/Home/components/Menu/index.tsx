@@ -28,7 +28,7 @@ function Menu() {
       <List>
         {coffeeList.map((item) => (
           <Item key={item.name}>
-            <ImageContainer>{getCoffeeImage(item)}</ImageContainer>
+            <ImageContainer>{getCoffeeImage(item.imageAlias)}</ImageContainer>
             <ItemTags>
               {item.tags.map((tag) => (
                 <Tag key={tag}>{tag}</Tag>

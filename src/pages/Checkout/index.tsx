@@ -2,10 +2,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { FormProvider, useForm } from "react-hook-form";
 
 import CompleteOrder from "./components/CompleteOrder";
+import SelectedCoffees from "./components/SelectedCoffees";
 import { DeliveryFormDataSchema } from "./schema";
 import { DeliveryFormData } from "./types";
 
-import { Container, Section, SectionTitle } from "./styles";
+import { Container } from "./styles";
 
 function Checkout() {
   const methods = useForm<DeliveryFormData>({
@@ -33,13 +34,7 @@ function Checkout() {
       <form onSubmit={handleSubmit(onSubmit)}>
         <FormProvider {...methods}>
           <CompleteOrder />
-          <Section>
-            <SectionTitle>
-              <h2>Selected items</h2>
-
-              <button type="submit">Confirm order</button>
-            </SectionTitle>
-          </Section>
+          <SelectedCoffees />
         </FormProvider>
       </form>
     </Container>

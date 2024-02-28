@@ -81,7 +81,7 @@ export const Input = styled.input`
 
 export const Error = styled.span`
   color: ${({ theme }) => theme.colors.secondary[200]};
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   font-weight: 400;
   line-height: 130%;
 `;

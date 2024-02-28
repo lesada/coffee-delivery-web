@@ -13,7 +13,6 @@ export const Item = styled(RxToggleGroup.Item)`
 
   color: ${({ theme }) => theme.colors.neutral[700]};
   font-size: 0.75rem;
-  line-height: 160%;
   text-transform: uppercase;
 
   border: 1px solid ${({ theme }) => theme.colors.neutral[400]};
@@ -25,6 +24,10 @@ export const Item = styled(RxToggleGroup.Item)`
   &[data-state="on"] {
     border: 1px solid ${({ theme }) => theme.colors.primary[100]};
     background-color: ${({ theme }) => theme.colors.primary[0]};
+  }
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.neutral[500]};
   }
 `;
 

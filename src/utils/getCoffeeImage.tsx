@@ -1,10 +1,9 @@
 import CoffeeImages from "@/assets/CoffeeList";
-import { TCoffee } from "@/types/coffee";
 
-function getCoffeeImage(coffee: TCoffee) {
+function getCoffeeImage(imageAlias: string) {
   let image = undefined;
-  if (coffee.imageAlias in CoffeeImages)
-    image = CoffeeImages[coffee.imageAlias as keyof typeof CoffeeImages];
+  if (imageAlias in CoffeeImages)
+    image = CoffeeImages[imageAlias as keyof typeof CoffeeImages];
 
   return <img src={image} alt="" />;
 }
