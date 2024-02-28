@@ -18,13 +18,19 @@ import {
   Column,
   ConfirmButton,
   Container,
+  Info,
+  InfoLabel,
+  InfoValue,
   Line,
   RemoveButton,
   Row,
 } from "./styles";
 
 function SelectedCoffees() {
-  const { cartItems, removeItem } = useCart();
+  const { cartItems, removeItem, getItemTotalPrice, totalPrice } = useCart();
+
+  const deliveryPrice = 3.5;
+
   return (
     <Section>
       <Container>
@@ -49,11 +55,27 @@ function SelectedCoffees() {
                     </RemoveButton>
                   </Row>
                 </Column>
-                <CartItemPrice>$ {formatToCurrency(item.price)}</CartItemPrice>
+                <CartItemPrice>
+                  $ {formatToCurrency(getItemTotalPrice(item))}
+                </CartItemPrice>
               </CartItem>
               <Line />
             </Fragment>
           ))}
+          <Info>
+            <InfoLabel>Total de itens</InfoLabel>
+            <InfoValue>$ {formatToCurrency(totalPrice)}</InfoValue>
+          </Info>
+          <Info>
+            <InfoLabel>Entrega</InfoLabel>
+            <InfoValue>$ {formatToCurrency(deliveryPrice)}</InfoValue>
+          </Info>
+          <Info>
+            <InfoLabel $bold>Total</InfoLabel>
+            <InfoValue $bold>
+              $ {formatToCurrency(totalPrice + deliveryPrice)}
+            </InfoValue>
+          </Info>
           <ConfirmButton type="submit">Confirm order</ConfirmButton>
         </CartItems>
       </Container>

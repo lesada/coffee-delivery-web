@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Container = styled.div`
   border-radius: 0.375rem 2.75rem;
@@ -112,4 +112,41 @@ export const RemoveButton = styled.button`
   &:hover {
     background-color: ${({ theme }) => theme.colors.neutral[500]};
   }
+`;
+
+export const Info = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+`;
+
+const Bold = css`
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: ${({ theme }) => theme.colors.neutral[700]};
+`;
+
+export const InfoLabel = styled.p<{ $bold?: boolean }>`
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: ${({ theme }) => theme.colors.neutral[700]};
+
+  ${({ $bold }) => $bold && Bold}
+`;
+
+export const InfoValue = styled.p<{ $bold?: boolean }>`
+  font-size: 1rem;
+  font-weight: 400;
+  color: ${({ theme }) => theme.colors.neutral[700]};
+  text-align: right;
+
+  ${({ $bold }) => $bold && Bold}
+`;
+
+export const Total = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
 `;

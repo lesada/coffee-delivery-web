@@ -13,6 +13,8 @@ type CartContextData = {
   getCurrentItemQuantity: (item: TCoffee) => number;
   clearCart: () => void;
   removeItem: (item: TCoffee) => void;
+  getItemTotalPrice: (item: CartItem) => number;
+  totalPrice: number;
 };
 
 export const CartContext = createContext({} as CartContextData);
@@ -53,6 +55,15 @@ export function CartContextProvider({ children }: PropsWithChildren) {
     );
   }
 
+  function getItemTotalPrice(item: CartItem) {
+    return item.price * item.quantity;
+  }
+
+  const totalPrice = cartItems.reduce(
+    (acc, item) => acc + getItemTotalPrice(item),
+    0
+  );
+
   const itemsQuantity = cartItems.reduce((acc, item) => acc + item.quantity, 0);
 
   return (
@@ -64,6 +75,8 @@ export function CartContextProvider({ children }: PropsWithChildren) {
         getCurrentItemQuantity,
         clearCart,
         removeItem,
+        getItemTotalPrice,
+        totalPrice,
       }}
     >
       {children}
