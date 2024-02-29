@@ -5,7 +5,7 @@ export type DeliveryFormData = {
   district: string;
   city: string;
   state: string;
-  paymentMethod?: string;
+  paymentMethod: string;
 };
 
 export type FieldProps = {

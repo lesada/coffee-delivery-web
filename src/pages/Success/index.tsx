@@ -1,7 +1,13 @@
+import { useEffect } from "react";
+
 import { Clock, CurrencyDollar, MapPin } from "phosphor-react";
+import { useNavigate } from "react-router-dom";
 
 import Assets from "@/assets";
 import CircleIcon from "@/components/CircleIcon";
+import { PaymentMethods } from "@/constants/paymentMethodsEnum";
+import useOrder from "@/contexts/order";
+import { RoutesPaths } from "@/routes/paths";
 import colors from "@/theme/colors";
 
 import {
@@ -15,6 +21,16 @@ import {
 } from "./styles";
 
 function Success() {
+  const { order } = useOrder();
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!order) return navigate(RoutesPaths.HOME);
+  }, [order, navigate]);
+
+  if (!order) return null;
+
   return (
     <Container>
       <Wrapper>
@@ -29,7 +45,8 @@ function Success() {
                 <MapPin size={16} color={colors.neutral[0]} weight="fill" />
               </CircleIcon>
               <p>
-                Deliver to: <b>1234, Fake St,</b> <br /> Fake City, FK
+                Deliver to: <b>{order.address},</b> <br /> {order.city},{" "}
+                {order.state}
               </p>
             </Row>
             <Row>
@@ -52,12 +69,17 @@ function Success() {
               </CircleIcon>
               <p>
                 Payment method:
-                <b>Credit card</b>
+                <b>
+                  {
+                    PaymentMethods[
+                      order.paymentMethod as keyof typeof PaymentMethods
+                    ]
+                  }
+                </b>
               </p>
             </Row>
           </Info>
         </Column>
-
         <Assets.Success />
       </Wrapper>
     </Container>
