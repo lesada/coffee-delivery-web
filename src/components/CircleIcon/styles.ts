@@ -9,4 +9,6 @@ export const Container = styled.div<{ $color: string }>`
   padding: 0.5rem;
 
   background-color: ${({ $color }) => $color};
+
+  width: fit-content;
 `;
