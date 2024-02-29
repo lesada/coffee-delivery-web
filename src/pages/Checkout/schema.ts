@@ -10,5 +10,5 @@ export const DeliveryFormDataSchema = Zod.object({
   city: Zod.string().min(1, "City is required"),
   state: Zod.string().min(1, "State is required"),
 
-  paymentMethod: Zod.string(),
+  paymentMethod: Zod.string().min(1, "Payment method is required"),
 });

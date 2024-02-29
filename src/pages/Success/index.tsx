@@ -69,6 +69,7 @@ function Success() {
               </CircleIcon>
               <p>
                 Payment method:
+                <br />
                 <b>
                   {
                     PaymentMethods[

@@ -2,6 +2,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { FormProvider, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
+import useCart from "@/contexts/cart";
 import useOrder from "@/contexts/order";
 import { RoutesPaths } from "@/routes/paths";
 
@@ -14,6 +15,7 @@ import { Container } from "./styles";
 
 function Checkout() {
   const { setOrder } = useOrder();
+  const { clearCart } = useCart();
   const navigate = useNavigate();
   const methods = useForm<DeliveryFormData>({
     defaultValues: {
@@ -39,6 +41,7 @@ function Checkout() {
       paymentMethod: data.paymentMethod,
     };
     setOrder(object);
+    clearCart();
     navigate(RoutesPaths.SUCCESS);
   };
 
